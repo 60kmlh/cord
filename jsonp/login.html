@@ -1,0 +1,34 @@
+<html>
+	<head>
+	<script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<label for="name">账户</label>
+			<input type="input" name="name" id="name" />
+			<br />
+			<label for="pass">密码</label>
+			<input type="input" name="pass" id="pass" />
+		</form>
+		<button id='btn'>登陆</button>
+	<body>
+	<script>
+	new VConsole()
+	let btn = document.getElementById('btn')
+	let name = document.getElementById('name')
+	let pass = document.getElementById('pass')
+
+	btn.addEventListener('click', function () {
+		var xhr = new XMLHttpRequest();
+		var url = 'http://www.sso.com:3000/login'
+		xhr.open('POST', url)
+		xhr.setRequestHeader('content-type', 'application/json')
+		xhr.send(JSON.stringify({name: name, pass: pass}))
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+					text.innerHTML = xhr.response;
+			}
+		}
+	})
+	</script>
+</html>

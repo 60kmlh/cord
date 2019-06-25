@@ -1,0 +1,34 @@
+<html>
+	<head>
+	<script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+	</head>
+	<body>
+		<div id='content'></div>
+	<body>
+	<script>
+	new VConsole()
+	
+	function jsonp(url, callback) {
+		let bodyEl = document.getElementsByTagName('body')[0]
+		let scriptEl = document.createElement('script')
+		scriptEl.src = url + '?callback=' + callback
+		scriptEl.type = 'text/javascript'
+		bodyEl.appendChild(scriptEl)
+	}
+
+	function jsonpCallback (data) {
+		let el = document.getElementById('content')
+		if (data.status === 'logined') {
+			el.innerHTML = 'logined'
+		} else {
+			// el.innerHTML = 'unlogin'
+			window.location.href = 'http://www.b.com:8080/login.html'
+		}
+	}
+
+	window.onload = function () {
+		let url = 'http://www.sso.com:3000/checklogin'
+		jsonp(url, 'jsonpCallback')
+	}
+	</script>
+</html>
