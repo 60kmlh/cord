@@ -23,10 +23,17 @@
 		var url = 'http://www.sso.com:3000/login'
 		xhr.open('POST', url)
 		xhr.setRequestHeader('content-type', 'application/json')
-		xhr.send(JSON.stringify({name: name, pass: pass}))
+		xhr.send(JSON.stringify({name: name.value, pass: pass.value}))
 		xhr.onreadystatechange = () => {
 			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-					text.innerHTML = xhr.response;
+					console.log(xhr.responseText)
+					let response = JSON.parse(xhr.responseText)
+					if (response.status === 'success') {
+						let from = document.referrer
+						window.location.replace(from)
+					} else {
+						alert('登陆失败')
+					}
 			}
 		}
 	})

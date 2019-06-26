@@ -1,0 +1,24 @@
+{
+  "name": "cord-master",
+  "version": "1.0.0",
+  "description": "https://harttle.land/2016/12/28/cors-with-cookie.html\r https://bitmyth.com/wordpress/laravel-jsonp-sso",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/60kmlh/cord.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/60kmlh/cord/issues"
+  },
+  "homepage": "https://github.com/60kmlh/cord#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "querystring": "^0.2.0"
+  }
+}
