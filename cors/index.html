@@ -1,0 +1,26 @@
+<html>
+	<head>
+	<script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+	</head>
+	<body>
+		<button id='btn'>send</button>
+	<body>
+	<script>
+	new VConsole()
+	let btn = document.getElementById('btn')
+
+	btn.addEventListener('click', function () {
+		var xhr = new XMLHttpRequest();
+		var url = 'http://www.cors.com:3000'
+		xhr.open('POST', url)
+		xhr.setRequestHeader('content-type', 'application/json')
+		xhr.send(JSON.stringify({name: 12, pass: 12}))
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+					console.log(xhr.responseText)
+					let response = JSON.parse(xhr.responseText)
+			}
+		}
+	})
+	</script>
+</html>
